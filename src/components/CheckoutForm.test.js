@@ -31,16 +31,20 @@ test("shows success message on submit with form details", async () => {
     userEvent.click(button)
 
     const dataMessage = await screen.findByTestId('successMessage')
-    const nameOutput = screen.getByText(/Ulises/)
+    const firstNameOutput = screen.getByText(/Ulises/)
+    const lastNameOutput = screen.getByText(/Gatica/)
     const streetOutput = screen.getByText(/111south 222east/)
-    const addressOutput = screen.getByText(/Cali/)
+    const cityOutput = screen.getByText(/fake city/)
+    const stateOutput = screen.getByText(/Cali/)
     const zipOutput = screen.getByText(/88888/)
     
      //Assert
      expect(dataMessage).toBeInTheDocument()
-     expect(nameOutput).toBeInTheDocument(/Ulises Gatica/)
+     expect(firstNameOutput).toBeInTheDocument(/Ulises/)
+     expect(lastNameOutput).toBeInTheDocument(/Gatica/)
      expect(streetOutput).toBeInTheDocument(/111south 222east/)
-     expect(addressOutput).toBeInTheDocument(/fake city/)
+     expect(cityOutput).toBeInTheDocument(/fake city/)
+     expect(stateOutput).toBeInTheDocument(/Cali/)
      expect(zipOutput).toBeInTheDocument(/88888/)
     
 });
